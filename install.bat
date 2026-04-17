@@ -11,7 +11,9 @@ py -3.10 -m venv .venv
 if %errorlevel% neq 0 py -3 -m venv .venv
 call .venv\Scripts\activate
 python -m pip install --upgrade pip
-pip install -r requirements.txt
+set PIP_CONSTRAINT=%cd%\constraints.txt
+pip install "setuptools<70" "numpy<2" "Cython<3" wheel
+pip install -r requirements.txt --constraint constraints.txt
 python generate_assets.py
 
 where ffmpeg >nul 2>&1

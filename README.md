@@ -55,3 +55,10 @@ Each run creates a UUID-isolated session under `workspace/session_<id>/` with:
 ## Asset generation
 - Placeholder PNG assets are generated locally by `generate_assets.py` and are not committed as binaries.
 - Run `python generate_assets.py` anytime to regenerate `assets/backgrounds/*.png` and character part PNGs.
+
+
+## Install troubleshooting (TTS / pyworld)
+- If install fails while building `pyworld` from the `TTS` dependency chain, run install scripts as provided: they pin compatible build tools using `constraints.txt` (`setuptools<70`, `numpy<2`, `Cython<3`).
+- You can also retry manually:
+  - `pip install "setuptools<70" "numpy<2" "Cython<3" wheel`
+  - `pip install -r requirements.txt --constraint constraints.txt`

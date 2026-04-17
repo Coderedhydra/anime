@@ -9,7 +9,9 @@ fi
 "$PYTHON_BIN" -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
-pip install -r requirements.txt
+export PIP_CONSTRAINT="$(pwd)/constraints.txt"
+pip install "setuptools<70" "numpy<2" "Cython<3" wheel
+pip install -r requirements.txt --constraint constraints.txt
 
 python generate_assets.py
 
