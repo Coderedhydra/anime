@@ -1,0 +1,12 @@
+{
+  "scale_factor": 0.7,
+  "head_size_multiplier": 1.4,
+  "limb_length_override": {
+    "upper_arm": 60,
+    "lower_arm": 55,
+    "upper_leg": 70,
+    "lower_leg": 65
+  },
+  "canvas_height": 400,
+  "canvas_width": 300
+}

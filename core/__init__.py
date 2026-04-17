@@ -1,0 +1,1 @@
+"""AnimaForge core package."""
