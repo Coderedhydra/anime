@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Runtime workspace outputs
+workspace/
+*.log
+
+# Generated asset/model/audio/video binaries
+*.png
+*.jpg
+*.jpeg
+*.wav
+*.mp3
+*.mp4
+*.mov
+*.pt
+*.onnx
+*.bin
+
+# Keep folder structure and JSON configs
+!assets/
+!assets/**/
+!assets/**/*.json
