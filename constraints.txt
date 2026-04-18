@@ -1,4 +1,0 @@
-# Build/runtime compatibility pins for packages pulled by TTS (e.g., pyworld)
-setuptools<70
-numpy<2
-Cython<3

@@ -8,33 +8,20 @@ fi
 
 "$PYTHON_BIN" -m venv .venv
 source .venv/bin/activate
-pip install --upgrade pip
-export PIP_CONSTRAINT="$(pwd)/constraints.txt"
-pip install "setuptools<70" "numpy<2" "Cython<3" wheel
-pip install -r requirements.txt --constraint constraints.txt
-
-python generate_assets.py
+python -m pip install --upgrade pip
+pip install -r requirements.txt
 
 if ! command -v ffmpeg >/dev/null 2>&1; then
-  echo "ffmpeg not found. Installing via apt..."
+  echo "ffmpeg missing. Installing with apt (if available)..."
   if command -v apt >/dev/null 2>&1; then
     sudo apt update && sudo apt install -y ffmpeg
   else
-    echo "Please install ffmpeg manually for your OS."
+    echo "Please install ffmpeg manually."
   fi
 fi
 
 if ! command -v ollama >/dev/null 2>&1; then
-  echo "Ollama not found. Install from: https://ollama.com/download"
+  echo "Install Ollama: https://ollama.com/download"
 fi
 
-mkdir -p models/piper models
-if [ ! -f models/piper/en_US-amy-medium.onnx ]; then
-  curl -L -o models/piper/en_US-amy-medium.onnx https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/amy/medium/en_US-amy-medium.onnx
-fi
-
-if [ ! -f models/yolov8n-pose.pt ]; then
-  curl -L -o models/yolov8n-pose.pt https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8n-pose.pt
-fi
-
-echo "✅ AnimaForge ready! Run: python main.py"
+echo "✅ Ready. Run: python main.py"
